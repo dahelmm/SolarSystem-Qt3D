@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/">
+        <file>SpaceCraft/Voyager.mtl</file>
+        <file>SpaceCraft/Voyager.obj</file>
+    </qresource>
+</RCC>
