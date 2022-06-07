@@ -6,9 +6,15 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1526</width>
-    <height>1279</height>
+    <width>1141</width>
+    <height>534</height>
    </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
   </property>
   <property name="palette">
    <palette>
@@ -95,14 +101,8 @@
       </property>
       <property name="maximumSize">
        <size>
-        <width>1400</width>
-        <height>1218</height>
-       </size>
-      </property>
-      <property name="baseSize">
-       <size>
-        <width>1400</width>
-        <height>800</height>
+        <width>16777215</width>
+        <height>16777215</height>
        </size>
       </property>
       <property name="palette">
@@ -308,20 +308,30 @@
         <property name="minimumSize">
          <size>
           <width>100</width>
-          <height>20</height>
+          <height>50</height>
          </size>
         </property>
         <property name="maximumSize">
          <size>
           <width>100</width>
-          <height>20</height>
+          <height>50</height>
          </size>
         </property>
         <property name="autoFillBackground">
          <bool>true</bool>
         </property>
         <property name="text">
-         <string>Солнце</string>
+         <string/>
+        </property>
+        <property name="icon">
+         <iconset resource="Files.qrc">
+          <normaloff>:/Icons/Sun.png</normaloff>:/Icons/Sun.png</iconset>
+        </property>
+        <property name="iconSize">
+         <size>
+          <width>50</width>
+          <height>50</height>
+         </size>
         </property>
         <property name="checked">
          <bool>true</bool>
@@ -358,25 +368,75 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1526</width>
+     <width>1141</width>
      <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menu">
     <property name="title">
-     <string>Кнопка</string>
+     <string>Выбрать планету</string>
     </property>
     <addaction name="action"/>
+    <addaction name="action_2"/>
+    <addaction name="action_3"/>
+    <addaction name="action_4"/>
+    <addaction name="action_5"/>
+    <addaction name="action_6"/>
+    <addaction name="action_7"/>
+    <addaction name="action_8"/>
+    <addaction name="action_9"/>
    </widget>
    <addaction name="menu"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="action">
    <property name="text">
-    <string>Кнопка</string>
+    <string>Солнце</string>
+   </property>
+  </action>
+  <action name="action_2">
+   <property name="text">
+    <string>Меркурий</string>
+   </property>
+  </action>
+  <action name="action_3">
+   <property name="text">
+    <string>Венера</string>
+   </property>
+  </action>
+  <action name="action_4">
+   <property name="text">
+    <string>Земля</string>
+   </property>
+  </action>
+  <action name="action_5">
+   <property name="text">
+    <string>Марс</string>
+   </property>
+  </action>
+  <action name="action_6">
+   <property name="text">
+    <string>Юпитер</string>
+   </property>
+  </action>
+  <action name="action_7">
+   <property name="text">
+    <string>Сатурн</string>
+   </property>
+  </action>
+  <action name="action_8">
+   <property name="text">
+    <string>Уран</string>
+   </property>
+  </action>
+  <action name="action_9">
+   <property name="text">
+    <string>Нептун</string>
    </property>
   </action>
  </widget>
- <resources/>
+ <resources>
+  <include location="Files.qrc"/>
+ </resources>
  <connections/>
 </ui>

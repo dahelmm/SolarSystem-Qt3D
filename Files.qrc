@@ -25,5 +25,7 @@
         <file>Textures/Tierra.jpg</file>
         <file>Textures/Tierra2k.jpg</file>
         <file>Textures/Tierra1024.jpg</file>
+        <file>Icons/Sun.png</file>
+        <file>Icons/Venus.png</file>
     </qresource>
 </RCC>

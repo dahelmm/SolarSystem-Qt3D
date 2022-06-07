@@ -15,11 +15,15 @@ SolarSystem::SolarSystem(QWidget *parent)
     rootEntity = new Qt3DCore::QEntity;//главная сущность;
 
     view = new Qt3DExtras::Qt3DWindow();
-    ui->widget->resize(QGuiApplication::screens().at(0)->geometry().width(),QGuiApplication::screens().at(0)->geometry().height());
-    QWidget *container  = QWidget::createWindowContainer(view,ui->widget);
-    container->resize(ui->widget->width(),ui->widget->height());
+//    ui->widget->resize(ui->widget->maximumSize());
+//    ui->widget->resize(QGuiApplication::screens().at(0)->geometry().width(),QGuiApplication::screens().at(0)->geometry().height());
+    QWidget *container  = QWidget::createWindowContainer(view,ui->centralwidget);
+    QGridLayout *lay = new QGridLayout(ui->widget);
+    lay->addWidget(container);
+    ui->widget->setLayout(lay);
+//    container->resize(ui->widget->width(),ui->widget->height());
 
-    qDebug()<<container->size()<<ui->widget->size()<<view->size();
+    qDebug()<<container->size()<<ui->centralwidget->size()<<view->size();
 
     camera = view->camera();
     camera->setPosition(QVector3D(0,0.0,3000.0));
