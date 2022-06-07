@@ -15,13 +15,10 @@ SolarSystem::SolarSystem(QWidget *parent)
     rootEntity = new Qt3DCore::QEntity;//главная сущность;
 
     view = new Qt3DExtras::Qt3DWindow();
-//    ui->widget->resize(ui->widget->maximumSize());
-//    ui->widget->resize(QGuiApplication::screens().at(0)->geometry().width(),QGuiApplication::screens().at(0)->geometry().height());
     QWidget *container  = QWidget::createWindowContainer(view,ui->centralwidget);
     QGridLayout *lay = new QGridLayout(ui->widget);
     lay->addWidget(container);
     ui->widget->setLayout(lay);
-//    container->resize(ui->widget->width(),ui->widget->height());
 
     qDebug()<<container->size()<<ui->centralwidget->size()<<view->size();
 
@@ -39,7 +36,7 @@ SolarSystem::SolarSystem(QWidget *parent)
 
     universe = new Qt3DCore::QEntity(rootEntity);
     universeSphere = new Qt3DExtras::QSphereMesh(universe);
-    universeSphere->setRadius(-25000);
+    universeSphere->setRadius(-50000);
     universeSphere->setRings(200);
 
     //текстура космоса
@@ -134,6 +131,7 @@ SolarSystem::SolarSystem(QWidget *parent)
 
     view->setRootEntity(rootEntity);
 
+    ui->action_Sun->setChecked(true);
 }
 
 SolarSystem::~SolarSystem()
@@ -163,35 +161,24 @@ void SolarSystem::focusSaturn()
     camera->viewSphere(Saturn->getTranslation(),Saturn->getRadius()+100);
 }
 
-
 void SolarSystem::focusUran()
 {
     camera->viewSphere(Uran->getTranslation(),Uran->getRadius()+50);
-
 }
-
 
 void SolarSystem::focusNeptune()
 {
     camera->viewSphere(Neptune->getTranslation(),Neptune->getRadius()+50);
-
 }
-
-
-
-
 
 void SolarSystem::focusMerc()
 {
     camera->viewSphere(Mercury->getTranslation(),Mercury->getRadius()+50);
-
 }
-
 
 void SolarSystem::focusVenus()
 {
     camera->viewSphere(Venus->getTranslation(),Venus->getRadius()+50);
-
 }
 
 void SolarSystem::focusSun()
@@ -199,55 +186,28 @@ void SolarSystem::focusSun()
     camera->setViewCenter(QVector3D(transformSun->translation()));
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 void SolarSystem::on_action_Sun_toggled(bool checked)
 {
-    //        disconnect(Earth->animationMovie,SIGNAL(valueChanged(QVariant)),this,SLOT(focusEarth()));
-    //        disconnect(Mars->animationMovie,SIGNAL(valueChanged(QVariant)),this,SLOT(focusMars()));
-    //        disconnect(Jupiter->animationMovie,SIGNAL(valueChanged(QVariant)),this,SLOT(focusJupiter()));
-    //        disconnect(Saturn->animationMovie,SIGNAL(valueChanged(QVariant)),this,SLOT(focusSaturn()));
-    //        disconnect(Uran->animationMovie,SIGNAL(valueChanged(QVariant)),this,SLOT(focusUran()));
-    //        disconnect(Neptune->animationMovie,SIGNAL(valueChanged(QVariant)),this,SLOT(focusNeptune()));
-    //        disconnect(Mercury->animationMovie,SIGNAL(valueChanged(QVariant)),this,SLOT(focusMerc()));
-    //        disconnect(Venus->animationMovie,SIGNAL(valueChanged(QVariant)),this,SLOT(focusVenus()));
+    if(checked==true)
+    {
+        camera->setViewCenter(QVector3D(0.0,0.0,0.0));
+        camera->setPosition(QVector3D(0,0.0,3000.0));
+        ui->action_Merc->setChecked(false);
+        ui->action_Venus->setChecked(false);
+        ui->action_Earth->setChecked(false);
+        ui->action_Mars->setChecked(false);
+        ui->action_Jupiter->setChecked(false);
+        ui->action_Saturn->setChecked(false);
+        ui->action_Uran->setChecked(false);
+        ui->action_Neptune->setChecked(false);
+        ui->dockInfo->setVisible(true);
+    }
+    else
+    {
+        ui->action_Sun->setChecked(false);
+        ui->dockInfo->setVisible(false);
 
-            if(checked==true)
-            {
-                camera->setViewCenter(QVector3D(0.0,0.0,0.0));
-                camera->setPosition(QVector3D(0,0.0,3000.0));
-                ui->action_Merc->setChecked(false);
-                ui->action_Venus->setChecked(false);
-                ui->action_Earth->setChecked(false);
-                ui->action_Mars->setChecked(false);
-                ui->action_Jupiter->setChecked(false);
-                ui->action_Saturn->setChecked(false);
-                ui->action_Uran->setChecked(false);
-                ui->action_Neptune->setChecked(false);
-            }
-            else
-            {
-                ui->action_Sun->setChecked(false);
-
-            }
+    }
 }
 
 void SolarSystem::on_action_Merc_toggled(bool checked)
@@ -268,18 +228,8 @@ void SolarSystem::on_action_Merc_toggled(bool checked)
     else
     {
         disconnect(Mercury->animationMovie,SIGNAL(valueChanged(QVariant)),this,SLOT(focusMerc()));
-
     }
 }
-
-
-
-
-
-
-
-
-
 
 void SolarSystem::on_action_Venus_toggled(bool checked)
 {
@@ -299,7 +249,6 @@ void SolarSystem::on_action_Venus_toggled(bool checked)
     else
     {
         disconnect(Venus->animationMovie,SIGNAL(valueChanged(QVariant)),this,SLOT(focusVenus()));
-
     }
 }
 
@@ -321,7 +270,6 @@ void SolarSystem::on_action_Earth_toggled(bool checked)
     else
     {
         disconnect(Earth->animationMovie,SIGNAL(valueChanged(QVariant)),this,SLOT(focusEarth()));
-
     }
 }
 
@@ -329,7 +277,6 @@ void SolarSystem::on_action_Mars_toggled(bool checked)
 {
     if(checked==true)
     {
-//        focusPlanet(Mars);
         connect(Mars->animationMovie,SIGNAL(valueChanged(QVariant)),this,SLOT(focusMars()));
         ui->action_Sun->setChecked(false);
         ui->action_Merc->setChecked(false);
@@ -343,7 +290,6 @@ void SolarSystem::on_action_Mars_toggled(bool checked)
     else
     {
         disconnect(Mars->animationMovie,SIGNAL(valueChanged(QVariant)),this,SLOT(focusMars()));
-
     }
 }
 
@@ -364,7 +310,6 @@ void SolarSystem::on_action_Jupiter_toggled(bool checked)
     else
     {
         disconnect(Jupiter->animationMovie,SIGNAL(valueChanged(QVariant)),this,SLOT(focusJupiter()));
-
     }
 }
 
@@ -385,7 +330,6 @@ void SolarSystem::on_action_Saturn_toggled(bool checked)
     else
     {
         disconnect(Saturn->animationMovie,SIGNAL(valueChanged(QVariant)),this,SLOT(focusSaturn()));
-
     }
 }
 
@@ -413,7 +357,6 @@ void SolarSystem::on_action_Neptune_toggled(bool checked)
 {
     if(checked==true)
     {
-
         connect(Neptune->animationMovie,SIGNAL(valueChanged(QVariant)),this,SLOT(focusNeptune()));
         ui->action_Sun->setChecked(false);
         ui->action_Merc->setChecked(false);
@@ -427,7 +370,6 @@ void SolarSystem::on_action_Neptune_toggled(bool checked)
     else
     {
         disconnect(Neptune->animationMovie,SIGNAL(valueChanged(QVariant)),this,SLOT(focusNeptune()));
-
     }
 }
 

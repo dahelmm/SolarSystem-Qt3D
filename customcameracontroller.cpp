@@ -190,9 +190,9 @@ void customCameraController::frameActionTriggered(float dt)
     if (m_keyMinPressed ==true)
     {
 
-        posCamera.setX(((cX<0)&&(cX!=0))?cX+dt*1000:cX-dt*1000);
-        posCamera.setY(((cY<0)&&(cY!=0))?cY+dt*1000:cY-dt*1000);
-        posCamera.setZ(((cZ<0)&&(cZ!=0))?cZ+dt*1000:cZ-dt*1000);
+        posCamera.setX(((cX<0)&&(cX!=0))?cX+dt*100:cX-dt*100);
+        posCamera.setY(((cY<0)&&(cY!=0))?cY+dt*100:cY-dt*100);
+        posCamera.setZ(((cZ<0)&&(cZ!=0))?cZ+dt*100:cZ-dt*100);
 
 
         m_camera->setPosition(posCamera);
@@ -200,9 +200,9 @@ void customCameraController::frameActionTriggered(float dt)
 
     if (m_keyPlusPressed == true)
     {
-        posCamera.setX(((cX<0)&&(cX!=0))?cX-dt*1000:cX+dt*1000);
-        posCamera.setY(((cY<0)&&(cY!=0))?cY-dt*1000:cY+dt*1000);
-        posCamera.setZ(((cZ<0)&&(cZ!=0))?cZ-dt*1000:cZ+dt*1000);
+        posCamera.setX(((cX<0)&&(cX!=0))?cX-dt*100:cX+dt*100);
+        posCamera.setY(((cY<0)&&(cY!=0))?cY-dt*100:cY+dt*100);
+        posCamera.setZ(((cZ<0)&&(cZ!=0))?cZ-dt*100:cZ+dt*100);
 
         m_camera->setPosition(posCamera);
 
