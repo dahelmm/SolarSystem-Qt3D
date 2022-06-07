@@ -204,109 +204,204 @@ void SolarSystem::focusSun()
 
 
 
-void SolarSystem::on_rB_Sun_toggled(bool checked)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+void SolarSystem::on_action_Sun_toggled(bool checked)
 {
+    //        disconnect(Earth->animationMovie,SIGNAL(valueChanged(QVariant)),this,SLOT(focusEarth()));
+    //        disconnect(Mars->animationMovie,SIGNAL(valueChanged(QVariant)),this,SLOT(focusMars()));
+    //        disconnect(Jupiter->animationMovie,SIGNAL(valueChanged(QVariant)),this,SLOT(focusJupiter()));
+    //        disconnect(Saturn->animationMovie,SIGNAL(valueChanged(QVariant)),this,SLOT(focusSaturn()));
+    //        disconnect(Uran->animationMovie,SIGNAL(valueChanged(QVariant)),this,SLOT(focusUran()));
+    //        disconnect(Neptune->animationMovie,SIGNAL(valueChanged(QVariant)),this,SLOT(focusNeptune()));
+    //        disconnect(Mercury->animationMovie,SIGNAL(valueChanged(QVariant)),this,SLOT(focusMerc()));
+    //        disconnect(Venus->animationMovie,SIGNAL(valueChanged(QVariant)),this,SLOT(focusVenus()));
 
-//        disconnect(Earth->animationMovie,SIGNAL(valueChanged(QVariant)),this,SLOT(focusEarth()));
-//        disconnect(Mars->animationMovie,SIGNAL(valueChanged(QVariant)),this,SLOT(focusMars()));
-//        disconnect(Jupiter->animationMovie,SIGNAL(valueChanged(QVariant)),this,SLOT(focusJupiter()));
-//        disconnect(Saturn->animationMovie,SIGNAL(valueChanged(QVariant)),this,SLOT(focusSaturn()));
-//        disconnect(Uran->animationMovie,SIGNAL(valueChanged(QVariant)),this,SLOT(focusUran()));
-//        disconnect(Neptune->animationMovie,SIGNAL(valueChanged(QVariant)),this,SLOT(focusNeptune()));
-//        disconnect(Mercury->animationMovie,SIGNAL(valueChanged(QVariant)),this,SLOT(focusMerc()));
-//        disconnect(Venus->animationMovie,SIGNAL(valueChanged(QVariant)),this,SLOT(focusVenus()));
-        camera->setViewCenter(QVector3D(0.0,0.0,0.0));
-        camera->setPosition(QVector3D(0,0.0,3000.0));
+            if(checked==true)
+            {
+                camera->setViewCenter(QVector3D(0.0,0.0,0.0));
+                camera->setPosition(QVector3D(0,0.0,3000.0));
+                ui->action_Merc->setChecked(false);
+                ui->action_Venus->setChecked(false);
+                ui->action_Earth->setChecked(false);
+                ui->action_Mars->setChecked(false);
+                ui->action_Jupiter->setChecked(false);
+                ui->action_Saturn->setChecked(false);
+                ui->action_Uran->setChecked(false);
+                ui->action_Neptune->setChecked(false);
+            }
+            else
+            {
+                ui->action_Sun->setChecked(false);
 
-
+            }
 }
 
-void SolarSystem::on_rB_Merc_toggled(bool checked)
+void SolarSystem::on_action_Merc_toggled(bool checked)
 {
     if(checked==true)
     {
 
         connect(Mercury->animationMovie,SIGNAL(valueChanged(QVariant)),this,SLOT(focusMerc()));
+        ui->action_Sun->setChecked(false);
+        ui->action_Venus->setChecked(false);
+        ui->action_Earth->setChecked(false);
+        ui->action_Mars->setChecked(false);
+        ui->action_Jupiter->setChecked(false);
+        ui->action_Saturn->setChecked(false);
+        ui->action_Uran->setChecked(false);
+        ui->action_Neptune->setChecked(false);
     }
     else
     {
         disconnect(Mercury->animationMovie,SIGNAL(valueChanged(QVariant)),this,SLOT(focusMerc()));
+
     }
 }
 
-void SolarSystem::on_rB_Venus_toggled(bool checked)
+
+
+
+
+
+
+
+
+
+void SolarSystem::on_action_Venus_toggled(bool checked)
 {
     if(checked==true)
     {
         connect(Venus->animationMovie,SIGNAL(valueChanged(QVariant)),this,SLOT(focusVenus()));
+        ui->action_Sun->setChecked(false);
+        ui->action_Merc->setChecked(false);
+        ui->action_Earth->setChecked(false);
+        ui->action_Mars->setChecked(false);
+        ui->action_Jupiter->setChecked(false);
+        ui->action_Saturn->setChecked(false);
+        ui->action_Uran->setChecked(false);
+        ui->action_Neptune->setChecked(false);
+
     }
     else
     {
         disconnect(Venus->animationMovie,SIGNAL(valueChanged(QVariant)),this,SLOT(focusVenus()));
+
     }
 }
 
-
-
-void SolarSystem::on_rB_Earth_toggled(bool checked)
+void SolarSystem::on_action_Earth_toggled(bool checked)
 {
     if(checked==true)
     {
         connect(Earth->animationMovie,SIGNAL(valueChanged(QVariant)),this,SLOT(focusEarth()));
-
-
+        ui->action_Sun->setChecked(false);
+        ui->action_Merc->setChecked(false);
+        ui->action_Venus->setChecked(false);
+        ui->action_Mars->setChecked(false);
+        ui->action_Jupiter->setChecked(false);
+        ui->action_Saturn->setChecked(false);
+        ui->action_Uran->setChecked(false);
+        ui->action_Neptune->setChecked(false);
 
     }
     else
     {
         disconnect(Earth->animationMovie,SIGNAL(valueChanged(QVariant)),this,SLOT(focusEarth()));
+
     }
 }
 
-void SolarSystem::on_rB_Mars_toggled(bool checked)
+void SolarSystem::on_action_Mars_toggled(bool checked)
 {
     if(checked==true)
     {
 //        focusPlanet(Mars);
         connect(Mars->animationMovie,SIGNAL(valueChanged(QVariant)),this,SLOT(focusMars()));
-
+        ui->action_Sun->setChecked(false);
+        ui->action_Merc->setChecked(false);
+        ui->action_Venus->setChecked(false);
+        ui->action_Earth->setChecked(false);
+        ui->action_Jupiter->setChecked(false);
+        ui->action_Saturn->setChecked(false);
+        ui->action_Uran->setChecked(false);
+        ui->action_Neptune->setChecked(false);
     }
     else
     {
         disconnect(Mars->animationMovie,SIGNAL(valueChanged(QVariant)),this,SLOT(focusMars()));
+
     }
 }
 
-void SolarSystem::on_rB_Jupiter_toggled(bool checked)
+void SolarSystem::on_action_Jupiter_toggled(bool checked)
 {
     if(checked==true)
     {
         connect(Jupiter->animationMovie,SIGNAL(valueChanged(QVariant)),this,SLOT(focusJupiter()));
+        ui->action_Sun->setChecked(false);
+        ui->action_Merc->setChecked(false);
+        ui->action_Venus->setChecked(false);
+        ui->action_Earth->setChecked(false);
+        ui->action_Mars->setChecked(false);
+        ui->action_Saturn->setChecked(false);
+        ui->action_Uran->setChecked(false);
+        ui->action_Neptune->setChecked(false);
     }
     else
     {
         disconnect(Jupiter->animationMovie,SIGNAL(valueChanged(QVariant)),this,SLOT(focusJupiter()));
+
     }
 }
 
-void SolarSystem::on_rB_Saturn_toggled(bool checked)
+void SolarSystem::on_action_Saturn_toggled(bool checked)
 {
     if(checked==true)
     {
         connect(Saturn->animationMovie,SIGNAL(valueChanged(QVariant)),this,SLOT(focusSaturn()));
-
+        ui->action_Sun->setChecked(false);
+        ui->action_Merc->setChecked(false);
+        ui->action_Venus->setChecked(false);
+        ui->action_Earth->setChecked(false);
+        ui->action_Mars->setChecked(false);
+        ui->action_Jupiter->setChecked(false);
+        ui->action_Uran->setChecked(false);
+        ui->action_Neptune->setChecked(false);
     }
     else
     {
         disconnect(Saturn->animationMovie,SIGNAL(valueChanged(QVariant)),this,SLOT(focusSaturn()));
+
     }
 }
 
-void SolarSystem::on_rB_Uran_toggled(bool checked)
+void SolarSystem::on_action_Uran_toggled(bool checked)
 {
     if(checked==true)
     {
         connect(Uran->animationMovie,SIGNAL(valueChanged(QVariant)),this,SLOT(focusUran()));
+        ui->action_Sun->setChecked(false);
+        ui->action_Merc->setChecked(false);
+        ui->action_Venus->setChecked(false);
+        ui->action_Earth->setChecked(false);
+        ui->action_Mars->setChecked(false);
+        ui->action_Jupiter->setChecked(false);
+        ui->action_Saturn->setChecked(false);
+        ui->action_Neptune->setChecked(false);
     }
     else
     {
@@ -314,14 +409,33 @@ void SolarSystem::on_rB_Uran_toggled(bool checked)
     }
 }
 
-void SolarSystem::on_rB_Neptune_toggled(bool checked)
+void SolarSystem::on_action_Neptune_toggled(bool checked)
 {
     if(checked==true)
     {
+
         connect(Neptune->animationMovie,SIGNAL(valueChanged(QVariant)),this,SLOT(focusNeptune()));
+        ui->action_Sun->setChecked(false);
+        ui->action_Merc->setChecked(false);
+        ui->action_Venus->setChecked(false);
+        ui->action_Earth->setChecked(false);
+        ui->action_Mars->setChecked(false);
+        ui->action_Jupiter->setChecked(false);
+        ui->action_Saturn->setChecked(false);
+        ui->action_Uran->setChecked(false);
     }
     else
     {
         disconnect(Neptune->animationMovie,SIGNAL(valueChanged(QVariant)),this,SLOT(focusNeptune()));
+
     }
 }
+
+
+
+
+
+
+
+
+

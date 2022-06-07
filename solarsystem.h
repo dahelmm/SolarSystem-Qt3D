@@ -80,22 +80,16 @@ public slots:
     void focusNeptune();
 
 private slots:
-    void on_rB_Sun_toggled(bool checked);
-    void on_rB_Merc_toggled(bool checked);
-    void on_rB_Venus_toggled(bool checked);
 
-
-    void on_rB_Earth_toggled(bool checked);
-
-    void on_rB_Mars_toggled(bool checked);
-
-    void on_rB_Jupiter_toggled(bool checked);
-
-    void on_rB_Saturn_toggled(bool checked);
-
-    void on_rB_Uran_toggled(bool checked);
-
-    void on_rB_Neptune_toggled(bool checked);
+    void on_action_Sun_toggled(bool arg1);
+    void on_action_Merc_toggled(bool arg1);
+    void on_action_Venus_toggled(bool arg1);
+    void on_action_Earth_toggled(bool arg1);
+    void on_action_Mars_toggled(bool arg1);
+    void on_action_Jupiter_toggled(bool arg1);
+    void on_action_Saturn_toggled(bool arg1);
+    void on_action_Uran_toggled(bool arg1);
+    void on_action_Neptune_toggled(bool arg1);
 
 private:
     Ui::SolarSystem *ui;
