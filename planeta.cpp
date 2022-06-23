@@ -17,6 +17,11 @@ planeta::planeta(Qt3DCore::QEntity *parent,
                  Qt3DCore::QTransform *targetRotation)
     :m_peroidRotation(periodRotaion)
 {
+    geometry = new Qt3DRender::QGeometry(parent);
+
+    bufferBytes.resize(4*360*sizeof(float));
+    float *positions = reinterpret_cast<float*>(bufferBytes.data());
+
     apog+=distance;
     perig+=distance;
 
@@ -43,9 +48,42 @@ planeta::planeta(Qt3DCore::QEntity *parent,
         x = (double) (a*((cos(fi))));
         z = (double) (b*((sin(fi))));
         transformMovie->setTranslation(QVector3D(x,0,z));
+        if(countPoint <= (360*3))
+        {
+//            *positions = transformMovie->translation().x();
+//            *positions = transformMovie->translation().y();
+//            *positions = transformMovie->translation().z();
+            countPoint++;
+        }
     });
+    *positions = 1000;
+    *positions = 0;
+    *positions = 0;
 
 
+    buf = new Qt3DRender::QBuffer(geometry);
+    buf->setData(bufferBytes);
+
+    positionAttribute = new Qt3DRender::QAttribute(geometry);
+    positionAttribute->setName(Qt3DRender::QAttribute::defaultPositionAttributeName());
+    positionAttribute->setVertexBaseType(Qt3DRender::QAttribute::Float);
+    positionAttribute->setVertexSize(3);
+    positionAttribute->setAttributeType(Qt3DRender::QAttribute::VertexAttribute);
+    positionAttribute->setBuffer(buf);
+    positionAttribute->setByteStride(3*sizeof(float));
+    positionAttribute->setCount(2);
+    geometry->addAttribute(positionAttribute);
+
+    line = new Qt3DRender::QGeometryRenderer(parent);
+    line->setGeometry(geometry);
+    line->setPrimitiveType((Qt3DRender::QGeometryRenderer::Lines));
+
+    materialLine = new Qt3DExtras::QPhongMaterial(parent);
+    materialLine->setAmbient(Qt::white);
+
+    entityGeometry = new Qt3DCore::QEntity(parent);
+    entityGeometry->addComponent(line);
+    entityGeometry->addComponent(materialLine);
 
     entity = new Qt3DCore::QEntity(parentEntity);
     transformEntity = new Qt3DCore::QTransform(entity);

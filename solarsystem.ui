@@ -180,30 +180,6 @@
    <addaction name="action_Uran"/>
    <addaction name="action_Neptune"/>
   </widget>
-  <widget class="QDockWidget" name="dockInfo">
-   <property name="minimumSize">
-    <size>
-     <width>100</width>
-     <height>10</height>
-    </size>
-   </property>
-   <property name="floating">
-    <bool>false</bool>
-   </property>
-   <property name="features">
-    <set>QDockWidget::AllDockWidgetFeatures</set>
-   </property>
-   <property name="allowedAreas">
-    <set>Qt::AllDockWidgetAreas</set>
-   </property>
-   <property name="windowTitle">
-    <string>Информация про планету</string>
-   </property>
-   <attribute name="dockWidgetArea">
-    <number>4</number>
-   </attribute>
-   <widget class="QWidget" name="dockWidgetContents"/>
-  </widget>
   <action name="action_Sun">
    <property name="checkable">
     <bool>true</bool>

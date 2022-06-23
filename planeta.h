@@ -22,6 +22,17 @@ public:
     Qt3DExtras::QSphereMesh *entitySphere;
     Qt3DCore::QEntity *entity;
 
+    Qt3DRender::QGeometry *geometry;
+    Qt3DRender::QBuffer *buf;
+    Qt3DRender::QAttribute *positionAttribute;
+    Qt3DRender::QGeometryRenderer *line;
+    Qt3DExtras::QPhongMaterial *materialLine;
+    Qt3DCore::QEntity *entityGeometry;
+
+
+    QByteArray bufferBytes;
+    QByteArray indexBytes;
+
     bool signalOfActivation;
 
 
@@ -34,6 +45,7 @@ public:
     QVector3D getTranslation();
     float getPeriod();
     Qt3DCore::QTransform *getTransform();
+    int countPoint = 0;
 
 private:
     float m_peroidRotation;

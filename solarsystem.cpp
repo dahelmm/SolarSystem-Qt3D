@@ -24,7 +24,7 @@ SolarSystem::SolarSystem(QWidget *parent)
 
     camera = view->camera();
     camera->setPosition(QVector3D(0,0.0,3000.0));
-    camera->lens()->setPerspectiveProjection(45,(float)view->width()/(float)view->height(),0.1f,100000.0f);
+    camera->lens()->setPerspectiveProjection(45,(float)view->width()/(float)view->height(),0.1f,1000000.0f);
 
 //    Qt3DExtras::QOrbitCameraController *cameraController = new Qt3DExtras::QOrbitCameraController(rootEntity);
     cameraController = new customCameraController(rootEntity);
@@ -36,7 +36,7 @@ SolarSystem::SolarSystem(QWidget *parent)
 
     universe = new Qt3DCore::QEntity(rootEntity);
     universeSphere = new Qt3DExtras::QSphereMesh(universe);
-    universeSphere->setRadius(-50000);
+    universeSphere->setRadius(-70000);
     universeSphere->setRings(200);
 
     //текстура космоса
@@ -80,14 +80,14 @@ SolarSystem::SolarSystem(QWidget *parent)
     sunAnimation.start();
 
 
-    Mercury = new planeta   (universe,QUrl("qrc:/Textures/2k_mercury.jpg"),         sunSphere->radius()+58,  sunSphere->radius()/285,   1407,   88,     46,     70,     0.205);
-    Venus = new planeta     (universe,QUrl("qrc:/Textures/2k_venus_atmosphere.jpg"),sunSphere->radius()+108, sunSphere->radius()/115,   5832,   224,    107,    108,    0.007);
-    Earth = new planeta     (universe,QUrl("qrc:/Textures/Tierra2k.jpg"),           sunSphere->radius()+150, sunSphere->radius()/109,   23,     365,    147,    152,    0.017);
-    Mars = new planeta      (universe,QUrl("qrc:/Textures/2k_mars.jpg"),            sunSphere->radius()+228, sunSphere->radius()/205,   24,     686,    207,    249,    0.093);
-    Jupiter = new planeta   (universe,QUrl("qrc:/Textures/2k_jupiter.jpg"),         sunSphere->radius()+778, sunSphere->radius()/10,    10,     4380,   741,    816,    0.048);
-    Saturn = new planeta    (universe,QUrl("qrc:/Textures/2k_saturn.jpg"),          sunSphere->radius()+1429,sunSphere->radius()/12,    11,     10585,  1350,   1503,   0.055);
-    Uran = new planeta      (universe,QUrl("qrc:/Textures/2k_uranus.jpg"),          sunSphere->radius()+2875,sunSphere->radius()/27,    17,     30660,  2735,   3006,   0.046);
-    Neptune = new planeta   (universe,QUrl("qrc:/Textures/2k_neptune.jpg"),         sunSphere->radius()+4497,sunSphere->radius()/28,    16,     59860,  4460,   4537,   0.009);
+    Mercury = new planeta   (universe,QUrl("qrc:/Textures/2k_mercury.jpg"),         sunSphere->radius()+580,  sunSphere->radius()/285,   1407,   88,     46,     70,     0.205);
+    Venus = new planeta     (universe,QUrl("qrc:/Textures/2k_venus_atmosphere.jpg"),sunSphere->radius()+1080, sunSphere->radius()/115,   5832,   224,    107,    108,    0.007);
+    Earth = new planeta     (universe,QUrl("qrc:/Textures/Tierra2k.jpg"),           sunSphere->radius()+1500, sunSphere->radius()/109,   23,     365,    147,    152,    0.017);
+    Mars = new planeta      (universe,QUrl("qrc:/Textures/2k_mars.jpg"),            sunSphere->radius()+2280, sunSphere->radius()/205,   24,     686,    207,    249,    0.093);
+    Jupiter = new planeta   (universe,QUrl("qrc:/Textures/2k_jupiter.jpg"),         sunSphere->radius()+7780, sunSphere->radius()/10,    10,     4380,   741,    816,    0.048);
+    Saturn = new planeta    (universe,QUrl("qrc:/Textures/2k_saturn.jpg"),          sunSphere->radius()+14290,sunSphere->radius()/12,    11,     10585,  1350,   1503,   0.055);
+    Uran = new planeta      (universe,QUrl("qrc:/Textures/2k_uranus.jpg"),          sunSphere->radius()+28750,sunSphere->radius()/27,    17,     30660,  2735,   3006,   0.046);
+    Neptune = new planeta   (universe,QUrl("qrc:/Textures/2k_neptune.jpg"),         sunSphere->radius()+44970,sunSphere->radius()/28,    16,     59860,  4460,   4537,   0.009);
 
     Luna = new planeta      (Earth->getEntity(),QUrl("qrc:/Textures/8k_moon.jpg"),Earth->getRadius()+(Earth->getRadius()/3.67)+0.384,Earth->getRadius()/3.67,24,27,0.36,0.4,0.055);
 
@@ -200,12 +200,10 @@ void SolarSystem::on_action_Sun_toggled(bool checked)
         ui->action_Saturn->setChecked(false);
         ui->action_Uran->setChecked(false);
         ui->action_Neptune->setChecked(false);
-        ui->dockInfo->setVisible(true);
     }
     else
     {
         ui->action_Sun->setChecked(false);
-        ui->dockInfo->setVisible(false);
 
     }
 }
